@@ -1,0 +1,17 @@
+<div class="container">  
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Cities</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let city of cities.data; let i = index">
+          <th scope="row">{{i}}</th>
+          <td>{{city}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

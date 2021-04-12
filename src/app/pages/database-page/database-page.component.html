@@ -1,0 +1,27 @@
+<div class="container">  
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">numericCode</th>
+          <th scope="col">name</th>
+          <th scope="col">capital</th>
+          <th scope="col">region</th>
+          <th scope="col">population</th>
+          <th scope="col">Bandera</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let pais of paisesddbb; let i = index">
+          <th scope="row">{{i}}</th>
+          <td>{{pais.numericCode}}</td>
+          <td>{{pais.name}}</td>
+          <td>{{pais.capital}}</td>
+          <td>{{pais.region}}</td>
+          <td>{{pais.population}}</td>
+          <td><img  style="height: 50px;width: 75px;" src="{{pais.flag}}" alt=""></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
