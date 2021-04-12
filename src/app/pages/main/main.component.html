@@ -1,5 +1,5 @@
 <div class="container">  
-
+  <div class="col-12 mt-2"><button type="button" class="btn btn-primary btn-lg btn-block" (click)="addCountry()">Añadir paises a BBDD</button></div>               
   <table class="table">
     <thead>
       <tr>
@@ -11,7 +11,6 @@
         <th scope="col">population</th>
         <th scope="col">Bandera</th>
         <th scope="col">Ciudades</th>
-        <th scope="col">Añadir a BBDD</th>
       </tr>
     </thead>
     <tbody>
@@ -24,7 +23,6 @@
         <td>{{pais.population}}</td>
         <td><img  style="height: 50px;width: 75px;" src="{{pais.flag}}" alt=""></td>
         <td><button class="btn primary"  [routerLink]="['/cities',pais.name]"><i class="fa fa-eye"></i></button></td>        
-        <td><button class=" btn"><i class="fa fa-plus" (click)="addCountry(pais)"></i></button></td>
       </tr>
     </tbody>
   </table>

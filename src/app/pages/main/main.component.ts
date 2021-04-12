@@ -16,15 +16,22 @@ export class MainComponent implements OnInit {
     this.router.navigate(['/cities/country'])
   }
 
-  addCountry(pais:any) {
-    this.servicioPaises.insertCountry(pais.name,pais.capital,pais.region,pais.population,pais.numericCode,pais.flag)
-    .subscribe((data:any) => {
+  // addCountry(pais:any) {
+  //   this.servicioPaises.insertCountry(pais.name,pais.capital,pais.region,pais.population,pais.numericCode,pais.flag)
+  //   .subscribe((data:any) => {
 
-      if (data.affectedRows == 1) {
-        alert("añadido a la BBDD")
-      } else {
-        alert("Ya existe en la BBDD")
-      }
+  //     if (data.affectedRows == 1) {
+  //       alert("añadido a la BBDD")
+  //     } else {
+  //       alert("Ya existe en la BBDD")
+  //     }
+  //   })
+  // }
+  addCountry() {
+    alert("Paises añadidos")
+    this.servicioPaises.insertCountry(this.paises)
+    .subscribe((data:any) => {
+      
     })
   }
 

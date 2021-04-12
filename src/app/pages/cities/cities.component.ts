@@ -22,6 +22,7 @@ export class CitiesComponent implements OnInit {
     console.log("pagina cities");
     console.log(this.country);
     this.servicioPaises.getCities(this.country).subscribe(data => {
+      console.log(data)
       this.cities = data;
     });
   }

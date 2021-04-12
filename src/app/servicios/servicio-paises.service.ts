@@ -28,17 +28,9 @@ export class ServicioPaisesService {
     return this.http.get(this.getPaises);    
   }
 
-  insertCountry(name,capital,region,population,numericCode,flag){
-    let params = {
-      "name": name,
-      "capital": capital,
-      "region": region,
-      "population": population,
-      "numericCode" : numericCode,
-      "flag": flag
-  }
-
-    return this.http.post(this.urlInsert,params)
+  
+  insertCountry(arrayPaises:Array<any>){
+    return this.http.post(this.urlInsert,arrayPaises)
 
   }
 }

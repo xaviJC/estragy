@@ -66,6 +66,7 @@ app.post("/getCities", (req, res) => {
   axios.post("https://countriesnow.space/api/v0.1/countries/cities", {
     country: req.body.country
   }).then(function (response) {
+    console.log(response)
     res.json(response.data);
   }).catch(function (error) {
     res.json("Error occured!")
@@ -74,33 +75,40 @@ app.post("/getCities", (req, res) => {
 
 
 app.post("/country", (req, res) => {
-  let params = [req.body.name, req.body.capital, req.body.region, req.body.population, req.body.numericCode, req.body.flag]
-  let name = [req.body.name]
-
-  let querySelect = "SELECT name FROM countries  WHERE name = ?"
-  connection.query(querySelect, name, function (error, result) {
-    if (error) {
-      respuesta = `Error: ${error}`
-    } else {
-      if (result.length == 0) {
-        let queryInsert = "INSERT INTO countries (id, name, capital, region, population, numericCode, flag) VALUES (NULL, ?, ?, ?, ?, ?, ?)"
-        connection.query(queryInsert, params, function (error, result) {
-          if (error) {
-            respuesta = `Error: ${error}`
-          } else if (result.length === 0) {
-            respuesta = result
-          } else {
-            respuesta = result
-          }
-          res.send(respuesta)
-        })
-        
-      } else {
+  let paises = req.body
+  console.log("------------------------------------------")
+  console.log(paises)
+  paises.forEach(pais => {
+    console.log("pais")
+    let name = pais.name
+    let params = [pais.name, pais.capital, pais.region, pais.population, pais.numericCode, pais.flag]
+    console.log(params)
+    let querySelect = "SELECT name FROM countries  WHERE name = ?"
+    connection.query(querySelect, name, function (error, result) {
+      if (error) {
         res.send(result)
+      } else {
+        if (result.length == 0) {
+          let queryInsert = "INSERT INTO countries (id, name, capital, region, population, numericCode, flag) VALUES (NULL, ?, ?, ?, ?, ?, ?)"
+          connection.query(queryInsert, params, function (error, result) {
+            if (error) {
+              respuesta = "Ha ocurrido un error: " + err + "."
+              
+            } else if (result.length === 0) {
+              respuesta = result
+            } else {
+              respuesta = result
+            }
+            
+          })
+          
+        } 
       }
+   
+    })
 
-    }
-  })
+  });
+
 
 })
 
